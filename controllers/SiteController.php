@@ -61,7 +61,15 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        
+            $comprobante = (Yii::$app->user->isGuest);
+            if($comprobante) {
+            $this->redirect('@web/user/login');
+            }
         return $this->render('index');
+        
+        
+        
     }
 
     /**
@@ -71,17 +79,18 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+//        $this->layout="login";
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
 
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+       if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         }
         return $this->render('login', [
             'model' => $model,
-        ]);
+       ]);
     }
 
     /**
@@ -91,9 +100,13 @@ class SiteController extends Controller
      */
     public function actionLogout()
     {
-        Yii::$app->user->logout();
-
-        return $this->goHome();
+ 
+//      $salir = (Yii::$app->user->isGuest);
+//        if ($salir)
+//        $this->redirect(['@web/user/login']);
+       Yii::$app->user->logout();
+       return $this->return("user/logout");
+                                 
     }
 
     /**

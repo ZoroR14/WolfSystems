@@ -3,8 +3,8 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Marca;
-use app\models\MarcaSearch;
+use app\models\ficha;
+use app\models\fichaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -12,9 +12,9 @@ use \yii\web\Response;
 use yii\helpers\Html;
 
 /**
- * MarcaController implements the CRUD actions for Marca model.
+ * FichaController implements the CRUD actions for ficha model.
  */
-class MarcaController extends Controller
+class FichaController extends Controller
 {
     /**
      * @inheritdoc
@@ -33,27 +33,25 @@ class MarcaController extends Controller
     }
 
     /**
-     * Lists all Marca models.
+     * Lists all ficha models.
      * @return mixed
      */
     public function actionIndex()
     {    
-        $comprobante = (Yii::$app->user->isGuest);
-        if($comprobante) {
-        $this->redirect('@web/user/login');
-            }
-        $searchModel = new MarcaSearch();
+        $searchModel = new \app\models\v_listadovendedoresSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $recibe = \yii\helpers\ArrayHelper::map (\app\models\userws::find()->all(),"id", "username");
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'recibe' => $recibe
         ]);
     }
 
 
     /**
-     * Displays a single Marca model.
+     * Displays a single ficha model.
      * @param integer $id
      * @return mixed
      */
@@ -63,7 +61,7 @@ class MarcaController extends Controller
         if($request->isAjax){
             Yii::$app->response->format = Response::FORMAT_JSON;
             return [
-                    'title'=> "Marca #".$id,
+                    'title'=> "ficha #".$id,
                     'content'=>$this->renderAjax('view', [
                         'model' => $this->findModel($id),
                     ]),
@@ -78,7 +76,7 @@ class MarcaController extends Controller
     }
 
     /**
-     * Creates a new Marca model.
+     * Creates a new ficha model.
      * For ajax request will return json object
      * and for non-ajax request if creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -86,7 +84,8 @@ class MarcaController extends Controller
     public function actionCreate()
     {
         $request = Yii::$app->request;
-        $model = new Marca();  
+        $model = new ficha();  
+        $recibe = \yii\helpers\ArrayHelper::map (\app\models\userws::find()->all(),"id", "username");
 
         if($request->isAjax){
             /*
@@ -95,9 +94,10 @@ class MarcaController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> "Create new Marca",
+                    'title'=> "Create new ficha",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
+                        'recibe' => $recibe
                     ]),
                     'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                                 Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
@@ -106,17 +106,18 @@ class MarcaController extends Controller
             }else if($model->load($request->post()) && $model->save()){
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> "Create new Marca",
-                    'content'=>'<span class="text-success">Create Marca success</span>',
+                    'title'=> "Create new ficha",
+                    'content'=>'<span class="text-success">Create ficha success</span>',
                     'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                             Html::a('Create More',['create'],['class'=>'btn btn-primary','role'=>'modal-remote'])
         
                 ];         
             }else{           
                 return [
-                    'title'=> "Create new Marca",
+                    'title'=> "Create new ficha",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
+                        'recibe' => $recibe
                     ]),
                     'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                                 Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
@@ -132,6 +133,7 @@ class MarcaController extends Controller
             } else {
                 return $this->render('create', [
                     'model' => $model,
+                    'recibe' => $recibe
                 ]);
             }
         }
@@ -139,7 +141,7 @@ class MarcaController extends Controller
     }
 
     /**
-     * Updates an existing Marca model.
+     * Updates an existing ficha model.
      * For ajax request will return json object
      * and for non-ajax request if update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
@@ -148,7 +150,8 @@ class MarcaController extends Controller
     public function actionUpdate($id)
     {
         $request = Yii::$app->request;
-        $model = $this->findModel($id);       
+        $model = $this->findModel($id);   
+        $recibe = \yii\helpers\ArrayHelper::map (\app\models\userws::find()->all(),"id", "username");
 
         if($request->isAjax){
             /*
@@ -157,9 +160,10 @@ class MarcaController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> "Update Marca #".$id,
+                    'title'=> "Update ficha #".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
+                        'recibe' => $recibe
                     ]),
                     'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                                 Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
@@ -167,18 +171,20 @@ class MarcaController extends Controller
             }else if($model->load($request->post()) && $model->save()){
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> "Marca #".$id,
+                    'title'=> "ficha #".$id,
                     'content'=>$this->renderAjax('view', [
                         'model' => $model,
+                        'recibe' => $recibe
                     ]),
                     'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                             Html::a('Edit',['update','id'=>$id],['class'=>'btn btn-primary','role'=>'modal-remote'])
                 ];    
             }else{
                  return [
-                    'title'=> "Update Marca #".$id,
+                    'title'=> "Update ficha #".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
+                        'recibe' => $recibe
                     ]),
                     'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                                 Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
@@ -193,13 +199,14 @@ class MarcaController extends Controller
             } else {
                 return $this->render('update', [
                     'model' => $model,
+                    'recibe' => $recibe
                 ]);
             }
         }
     }
 
     /**
-     * Delete an existing Marca model.
+     * Delete an existing ficha model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
@@ -227,7 +234,7 @@ class MarcaController extends Controller
     }
 
      /**
-     * Delete multiple existing Marca model.
+     * Delete multiple existing ficha model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
@@ -258,15 +265,15 @@ class MarcaController extends Controller
     }
 
     /**
-     * Finds the Marca model based on its primary key value.
+     * Finds the ficha model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Marca the loaded model
+     * @return ficha the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Marca::findOne($id)) !== null) {
+        if (($model = ficha::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

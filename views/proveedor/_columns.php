@@ -20,24 +20,24 @@ return [
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'precio',
+        'attribute'=>'cedula',
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'marca',
+        'attribute'=>'empresa',
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'categoria',
+        'attribute'=>'telefono',
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'modelo',
+        'attribute'=>'celular',
     ],
-     [
-         'class'=>'\kartik\grid\DataColumn',
-         'attribute'=>'notas',
-     ],
+    // [
+        // 'class'=>'\kartik\grid\DataColumn',
+        // 'attribute'=>'notas',
+    // ],
     [
         'class' => 'kartik\grid\ActionColumn',
         'dropdown' => false,

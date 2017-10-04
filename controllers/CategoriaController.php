@@ -38,6 +38,11 @@ class CategoriaController extends Controller
      */
     public function actionIndex()
     {    
+        $comprobante = (Yii::$app->user->isGuest);
+        if($comprobante) {
+            $this->redirect('@web/user/login');
+            }
+            
         $searchModel = new CategoriaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

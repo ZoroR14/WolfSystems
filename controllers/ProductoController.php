@@ -38,13 +38,26 @@ class ProductoController extends Controller
      */
     public function actionIndex()
     {    
-        $searchModel = new ProductoSearch();
+        
+           $comprobante = (Yii::$app->user->isGuest);
+            if($comprobante) {
+            $this->redirect('@web/user/login');
+            }
+        
+        $searchModel = new \app\models\V_listadoproductosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+         $marca = \yii\helpers\ArrayHelper::map (\app\models\Marca::find()->all(),"id", "nombre");
+        $categoria = \yii\helpers\ArrayHelper::map (\app\models\Categoria::find()->all(),"id", "nombre");
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+             'marca' => $marca,
+             'categoria' => $categoria
+            
         ]);
+       
+        
     }
 
 
@@ -55,6 +68,7 @@ class ProductoController extends Controller
      */
     public function actionView($id)
     {   
+        
         $request = Yii::$app->request;
         if($request->isAjax){
             Yii::$app->response->format = Response::FORMAT_JSON;
@@ -93,7 +107,7 @@ class ProductoController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> "Create new Producto",
+                    'title'=> "Crear un nuevo Producto",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                         'marca' => $marca,
@@ -114,7 +128,7 @@ class ProductoController extends Controller
                 ];         
             }else{           
                 return [
-                    'title'=> "Create new Producto",
+                    'title'=> "Crear un nuevo Producto",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                         'marca' => $marca,
@@ -153,7 +167,7 @@ class ProductoController extends Controller
     {
         $request = Yii::$app->request;
         $model = $this->findModel($id);
-         $marca = \yii\helpers\ArrayHelper::map (\app\models\marca::find()->all(),"id", "nombre");
+        $marca = \yii\helpers\ArrayHelper::map (\app\models\Marca::find()->all(),"id", "nombre");
         $categoria = \yii\helpers\ArrayHelper::map (\app\models\Categoria::find()->all(),"id", "nombre");
 
         if($request->isAjax){
@@ -163,7 +177,7 @@ class ProductoController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> "Update Producto #".$id,
+                    'title'=> "Actualizar Producto #".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
                         'marca' => $marca,
@@ -186,7 +200,7 @@ class ProductoController extends Controller
                 ];    
             }else{
                  return [
-                    'title'=> "Update Producto #".$id,
+                    'title'=> "Actualizar Producto #".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
                         'marca' => $marca,
