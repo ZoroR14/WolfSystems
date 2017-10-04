@@ -22,6 +22,9 @@ $config = [
             
       'user' => [
         'class' => 'dektrium\user\Module',
+          'controllerMap' => [
+            'admin' => 'app\controllers\user\AdminController',
+        ],
         'enableUnconfirmedLogin' => true,
         'confirmWithin' => 21600,
         'cost' => 12,
@@ -58,7 +61,8 @@ $config = [
          'view' => [
          'theme' => [
              'pathMap' => [
-                '@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app'
+                '@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app',
+                 '@dektrium/user/views' => '@app/views/user'
              ],
          ],
     ],
@@ -133,7 +137,7 @@ if (YII_ENV_DEV) {
                 'class' => 'claudejanz\mygii\generators\model\Generator',
             ],
               'kartik-crud' => [
-                    'class'     => 'claudejanz\mygii\generators\kcrud\Generator',
+                    'class'  => 'claudejanz\mygii\generators\kcrud\Generator',
                 ]
 
         ],
