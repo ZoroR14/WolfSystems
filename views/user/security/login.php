@@ -19,15 +19,19 @@ $this->params['breadcrumbs'][] = $this->title;
 <head>
   <meta charset="UTF-8">
   <title>Calm</title>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+    <script type="text/javascript" href="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" href="boostrap/js/jquery-3.2.1.min.js"></script>
   
-     <link rel = "stylesheet" href = "<?= Url::to('@web/calm/css/style.css')?>">  
-
+    <link rel ="stylesheet" href ="<?=Url::to('@web/calm/css/a.css')?>">
 </head>
 
 <body>
   <div class="wrapper">
 	<div class="container">
-		<h1>Bienvenido</h1>
+               <div class="col-xs-7">
+           
 		
 		<?php $form = ActiveForm::begin([
                     'class' => 'form',
@@ -37,6 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'validateOnType' => false,
                     'validateOnChange' => false,
                 ]) ?>
+                    
 
                 <?php if ($module->debug): ?>
                     <?= $form->field($model, 'login', [
@@ -64,13 +69,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ->passwordInput()
                         ->label(
                             Yii::t('user', 'Password')
-                            . ($module->enablePasswordRecovery ?
-                                ' (' . Html::a(
-                                    Yii::t('user', 'Forgot password?'),
-                                    ['/user/recovery/request'],
-                                    ['tabindex' => '5']
-                                )
-                                . ')' : '')
+                                
                         ) ?>
                 <?php endif ?>
                 <?= Html::submitButton(
@@ -78,9 +77,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     ['id' => 'login-button', 'tabindex' => '4']
                 ) ?>
 
-                <?php ActiveForm::end(); ?>   
+                <?php ActiveForm::end(); ?> 
+                    </div>
+            
                 
-	</div>	
+	 </div>
 	<ul class="bg-bubbles">
 		<li></li>
 		<li></li>
@@ -93,6 +94,8 @@ $this->params['breadcrumbs'][] = $this->title;
 		<li></li>
 		<li></li>
 	</ul>
+           	
+      
 </div>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 

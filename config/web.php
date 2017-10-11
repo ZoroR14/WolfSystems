@@ -39,6 +39,13 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'components' => [
+        'assetManager' => [
+        'bundles' => [
+            'dmstr\web\AdminLteAsset' => [
+                'skin' => 'skin-red',
+            ],
+        ],
+    ],
         
     'authManager' => [
     'class' => 'yii\rbac\DbManager', // or use 'yii\rbac\DbManager'
@@ -63,6 +70,7 @@ $config = [
              'pathMap' => [
                 '@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app',
                  '@dektrium/user/views' => '@app/views/user'
+                 
              ],
          ],
     ],

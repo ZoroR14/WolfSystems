@@ -1,6 +1,4 @@
-<?php
-
-/*
+<?php /*
  * This file is part of the Dektrium project.
  *
  * (c) Dektrium project <http://github.com/dektrium>

@@ -36,10 +36,17 @@ body :-ms-input-placeholder {
   color: white;
   font-weight: 300;
 }
+body{
+
+background-image:url(../css/img4.jpg);
+background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment:fixed; 
+	background-size:cover;
+}
 .wrapper {
-  background: #50a3a2;
-  background: -webkit-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
-  background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
+  background: -webkit-linear-gradient(top left);
+  background: (to bottom right);
   position: absolute;
   top: 50%;
   left: 0;
@@ -60,12 +67,12 @@ body :-ms-input-placeholder {
   text-align: center;
 }
 .container h1 {
-  font-size: 40px;
+  font-size: 60px;
   -webkit-transition-duration: 1s;
           transition-duration: 1s;
   -webkit-transition-timing-function: ease-in-put;
           transition-timing-function: ease-in-put;
-  font-weight: 200;
+  font-weight: 900;
 }
 form {
   padding: 20px 0;
@@ -84,7 +91,7 @@ form input {
   padding: 10px 15px;
   margin: 0 auto 10px auto;
   display: block;
-  text-align: center;
+  text-align: left;
   font-size: 18px;
   color: white;
   -webkit-transition-duration: 0.25s;
@@ -97,17 +104,17 @@ form input:hover {
 form input:focus {
   background-color: white;
   width: 300px;
-  color: #53e3a6;
+  color: black;
 }
 form button {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
   outline: 0;
-  background-color: white;
-  border: 0;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.2);
   padding: 10px 15px;
-  color: #53e3a6;
+  color:white;
   border-radius: 3px;
   width: 250px;
   cursor: pointer;
@@ -116,7 +123,7 @@ form button {
           transition-duration: 0.25s;
 }
 form button:hover {
-  background-color: #f5f7f9;
+  background-color:rgba(255, 255, 255, 0.4);
 }
 .bg-bubbles {
   position: absolute;
