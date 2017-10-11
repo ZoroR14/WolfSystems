@@ -19,10 +19,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <head>
   <meta charset="UTF-8">
   <title>Calm</title>
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
-    <script type="text/javascript" href="bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" href="boostrap/js/jquery-3.2.1.min.js"></script>
   
     <link rel ="stylesheet" href ="<?=Url::to('@web/calm/css/a.css')?>">
 </head>
