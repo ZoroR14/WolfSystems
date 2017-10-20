@@ -1,6 +1,4 @@
-<?php
-
-/* @var $this yii\web\View */
+<?php /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model app\models\LoginForm */
 
@@ -9,6 +7,7 @@ use yii\helpers\Url;
 use dektrium\user\widgets\Connect;
 use dektrium\user\models\LoginForm;
 use yii\widgets\ActiveForm;
+
 
 $this->title = Yii::t('user', 'Sign in');
 $this->params['breadcrumbs'][] = $this->title;
@@ -26,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <body>
   <div class="wrapper">
 	<div class="container">
-               <div class="col-xs-7">
+               <div class="col-md-12">
            
 		
 		<?php $form = ActiveForm::begin([
@@ -72,6 +71,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     Yii::t('user', 'Sign in'),
                     ['id' => 'login-button', 'tabindex' => '4']
                 ) ?>
+        <?php if ($module->enableRegistration): ?>
+            <br>
+            <p class="text-center">
+                <?= Html::a(Yii::t('user', 'Don\'t have an account? Sign up!'), ['/user/registration/register']) ?>
+            </p>
+        <?php endif ?>
 
                 <?php ActiveForm::end(); ?> 
                     </div>

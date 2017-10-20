@@ -19,12 +19,10 @@ $config = [
             
         ],
         
-            
-      'user' => [
+       'user' => [
         'class' => 'dektrium\user\Module',
-          'controllerMap' => [
-            'admin' => 'app\controllers\user\AdminController',
-        ],
+
+           
         'enableUnconfirmedLogin' => true,
         'confirmWithin' => 21600,
         'cost' => 12,
