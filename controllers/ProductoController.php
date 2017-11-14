@@ -16,21 +16,31 @@ use yii\helpers\Html;
  */
 class ProductoController extends Controller
 {
+     public $enableCsrfValidation = false;
+
     /**
      * @inheritdoc
      */
-    public function behaviors()
+public function behaviors()
     {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['post'],
-                    'bulk-delete' => ['post'],
+        return array_merge(parent::behaviors(), [
+
+            // For cross-domain AJAX request
+            'corsFilter'  => [
+                'class' => \yii\filters\Cors::className(),
+                'cors'  => [
+                    // restrict access to domains:
+                    'Origin'                           => ["*"],
+                    'Access-Control-Request-Method'    => ['POST', 'GET'],
+                    'Access-Control-Allow-Credentials' => true,
+                    'Access-Control-Max-Age'           => 3600,                 // Cache (seconds)
+
                 ],
             ],
-        ];
+
+        ]);
     }
+
 
     /**
      * Lists all Producto models.
@@ -299,5 +309,10 @@ class ProductoController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+    public function actionListado(){
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return Producto::find()->asArray()->all();
+
     }
 }
