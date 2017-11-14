@@ -61,12 +61,13 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        
+            
             $comprobante = (Yii::$app->user->isGuest);
             if($comprobante) {
             $this->redirect('@web/user/login');
             }
-        return $this->render('index');
+            $model = \app\models\Producto::find()->count();
+        return $this->render('index', ['producto' => $model]);
         
         
         

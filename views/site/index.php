@@ -8,11 +8,14 @@ $this->title = 'Wolf System';
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+       <div class="info-box">
+        <!-- Apply any bg-* class to to the icon to color it -->
+        <span class="info-box-icon bg-red"><i class="fa fa-star-o"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text">Likes</span>
+          <span class="info-box-number"><?= $producto; ?></span>
+        </div><!-- /.info-box-content -->
+      </div><!-- /.info-box -->
     </div>
 
     <div class="body-content">

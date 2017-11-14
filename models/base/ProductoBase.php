@@ -5,6 +5,7 @@ namespace app\models\base;
 use Yii;
 use app\models\Categoria;
 use app\models\Marca;
+use app\models\VentaDetalle;
 
 /**
  * This is the model class for table "producto".
@@ -19,6 +20,7 @@ use app\models\Marca;
     *
             * @property Categoria $categoria0
             * @property Marca $marca0
+            * @property VentaDetalle[] $ventaDetalles
     */
 class ProductoBase extends \yii\db\ActiveRecord
 {
@@ -74,5 +76,13 @@ return [
     public function getMarca0()
     {
     return $this->hasOne(Marca::className(), ['id' => 'marca']);
+    }
+
+    /**
+    * @return \yii\db\ActiveQuery
+    */
+    public function getVentaDetalles()
+    {
+    return $this->hasMany(VentaDetalle::className(), ['nombre_producto' => 'id']);
     }
 }
