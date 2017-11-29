@@ -4,10 +4,10 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\venta_detalleSearch */
+/* @var $searchModel app\models\VentaDetalleSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Venta Detalles');
+$this->title = 'Venta Detalles';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="venta-detalle-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Venta Detalle'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Venta Detalle', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -27,12 +27,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'nombre_producto',
             'cantidad',
-            'precio_unitario',
-            'fecha',
-            // 'vendedor',
-            // 'subtotal',
-            // 'total',
-            // 'venta_detalle',
+            'subtotal',
+            'total',
+            // 'venta_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
