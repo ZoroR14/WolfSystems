@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\VentaSearch */
+/* @var $model app\models\VentaDetalleSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="venta-search">
+<div class="venta-detalle-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -17,17 +17,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'nombre_cliente') ?>
+    <?= $form->field($model, 'nombre_producto') ?>
 
-    <?= $form->field($model, 'direccion') ?>
+    <?= $form->field($model, 'cantidad') ?>
 
-    <?= $form->field($model, 'celular') ?>
+    <?= $form->field($model, 'subtotal') ?>
 
-    <?= $form->field($model, 'telefono') ?>
+    <?= $form->field($model, 'total') ?>
 
-    <?php // echo $form->field($model, 'vendedor') ?>
-
-    <?php // echo $form->field($model, 'fecha') ?>
+    <?php // echo $form->field($model, 'venta_id') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

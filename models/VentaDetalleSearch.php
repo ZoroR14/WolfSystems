@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\venta_detalle;
+use app\models\VentaDetalle;
 
 /**
- * venta_detalleSearch represents the model behind the search form about `app\models\venta_detalle`.
+ * VentaDetalleSearch represents the model behind the search form about `app\models\VentaDetalle`.
  */
-class venta_detalleSearch extends venta_detalle
+class VentaDetalleSearch extends VentaDetalle
 {
     /**
      * @inheritdoc
@@ -18,8 +18,7 @@ class venta_detalleSearch extends venta_detalle
     public function rules()
     {
         return [
-            [['id', 'nombre_producto', 'cantidad', 'precio_unitario', 'vendedor', 'subtotal', 'total', 'venta_detalle'], 'integer'],
-            [['fecha'], 'safe'],
+            [['id', 'nombre_producto', 'cantidad', 'subtotal', 'total', 'venta_id'], 'integer'],
         ];
     }
 
@@ -41,7 +40,7 @@ class venta_detalleSearch extends venta_detalle
      */
     public function search($params)
     {
-        $query = venta_detalle::find();
+        $query = VentaDetalle::find();
 
         // add conditions that should always apply here
 
@@ -62,12 +61,9 @@ class venta_detalleSearch extends venta_detalle
             'id' => $this->id,
             'nombre_producto' => $this->nombre_producto,
             'cantidad' => $this->cantidad,
-            'precio_unitario' => $this->precio_unitario,
-            'fecha' => $this->fecha,
-            'vendedor' => $this->vendedor,
             'subtotal' => $this->subtotal,
             'total' => $this->total,
-            'venta_detalle' => $this->venta_detalle,
+            'venta_id' => $this->venta_id,
         ]);
 
         return $dataProvider;

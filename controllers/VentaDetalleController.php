@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\CompraDetalle;
-use app\models\CompraDetalleSearch;
+use app\models\VentaDetalle;
+use app\models\VentaDetalleSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * CompraDetalleController implements the CRUD actions for CompraDetalle model.
+ * VentaDetalleController implements the CRUD actions for VentaDetalle model.
  */
-class CompraDetalleController extends Controller
+class VentaDetalleController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class CompraDetalleController extends Controller
     }
 
     /**
-     * Lists all CompraDetalle models.
+     * Lists all VentaDetalle models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CompraDetalleSearch();
+        $searchModel = new VentaDetalleSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class CompraDetalleController extends Controller
     }
 
     /**
-     * Displays a single CompraDetalle model.
+     * Displays a single VentaDetalle model.
      * @param integer $id
      * @return mixed
      */
@@ -57,13 +57,13 @@ class CompraDetalleController extends Controller
     }
 
     /**
-     * Creates a new CompraDetalle model.
+     * Creates a new VentaDetalle model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new CompraDetalle();
+        $model = new VentaDetalle();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -75,7 +75,7 @@ class CompraDetalleController extends Controller
     }
 
     /**
-     * Updates an existing CompraDetalle model.
+     * Updates an existing VentaDetalle model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -83,7 +83,6 @@ class CompraDetalleController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -95,7 +94,7 @@ class CompraDetalleController extends Controller
     }
 
     /**
-     * Deletes an existing CompraDetalle model.
+     * Deletes an existing VentaDetalle model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -108,15 +107,15 @@ class CompraDetalleController extends Controller
     }
 
     /**
-     * Finds the CompraDetalle model based on its primary key value.
+     * Finds the VentaDetalle model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return CompraDetalle the loaded model
+     * @return VentaDetalle the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = CompraDetalle::findOne($id)) !== null) {
+        if (($model = VentaDetalle::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
