@@ -75,8 +75,6 @@ use kartik\widgets\DatePicker;
                     'iva',
                     'sub_total',
                     'total',
-                    'compra_id',
-                    
              
                 ],
             ]); ?>
@@ -100,6 +98,9 @@ use kartik\widgets\DatePicker;
                             }
                         ?> 
                         <div class="row">
+                        <div class="col-sm-4">
+                                <?= $form->field($modelCompraDetalle, "[{$i}]precio_unitario")->textInput(['maxlength' => true]) ?>
+                            </div>
                            <div class="col-sm-4">
                         <?= $form->field($modelCompraDetalle, "[{$i}]cantidad")->textInput(['maxlength' => true]) ?>
                            </div>

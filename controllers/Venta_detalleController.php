@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\VentaDetalle;
-use app\models\VentaDetalleSearch;
+use app\models\venta_detalle;
+use app\models\venta_detalleSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * VentaDetalleController implements the CRUD actions for VentaDetalle model.
+ * Venta_detalleController implements the CRUD actions for venta_detalle model.
  */
-class VentaDetalleController extends Controller
+class Venta_detalleController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class VentaDetalleController extends Controller
     }
 
     /**
-     * Lists all VentaDetalle models.
+     * Lists all venta_detalle models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new VentaDetalleSearch();
+        $searchModel = new venta_detalleSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class VentaDetalleController extends Controller
     }
 
     /**
-     * Displays a single VentaDetalle model.
+     * Displays a single venta_detalle model.
      * @param integer $id
      * @return mixed
      */
@@ -57,13 +57,13 @@ class VentaDetalleController extends Controller
     }
 
     /**
-     * Creates a new VentaDetalle model.
+     * Creates a new venta_detalle model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new VentaDetalle();
+        $model = new venta_detalle();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -75,7 +75,7 @@ class VentaDetalleController extends Controller
     }
 
     /**
-     * Updates an existing VentaDetalle model.
+     * Updates an existing venta_detalle model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -94,7 +94,7 @@ class VentaDetalleController extends Controller
     }
 
     /**
-     * Deletes an existing VentaDetalle model.
+     * Deletes an existing venta_detalle model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -107,15 +107,15 @@ class VentaDetalleController extends Controller
     }
 
     /**
-     * Finds the VentaDetalle model based on its primary key value.
+     * Finds the venta_detalle model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return VentaDetalle the loaded model
+     * @return venta_detalle the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = VentaDetalle::findOne($id)) !== null) {
+        if (($model = venta_detalle::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

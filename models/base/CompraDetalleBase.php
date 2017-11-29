@@ -36,6 +36,7 @@ public function rules()
         return [
             [['cantidad', 'iva', 'sub_total', 'compra_id'], 'integer'],
             [['precio_unitario'], 'number'],
+            [['compra_id'], 'required'],
             [['total'], 'string', 'max' => 45],
             [['compra_id'], 'exist', 'skipOnError' => true, 'targetClass' => Compra::className(), 'targetAttribute' => ['compra_id' => 'id']],
         ];
@@ -62,7 +63,6 @@ return [
     */
     public function getCompra()
     {
-    return $this->hasOne(compra::className(), ['id' => 'compra_id']);
+    return $this->hasOne(Compra::className(), ['id' => 'compra_id']);
     }
-    
 }

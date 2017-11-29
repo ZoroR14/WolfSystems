@@ -3,12 +3,14 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Venta */
+/* @var $model app\models\venta */
 
-$this->title = 'Update Venta: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Ventas', 'url' => ['index']];
+$this->title = Yii::t('app', 'Update {modelClass}: ', [
+    'modelClass' => 'Venta',
+]) . $model->id;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Ventas'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>
 <div class="venta-update">
 
@@ -16,7 +18,6 @@ $this->params['breadcrumbs'][] = 'Update';
 
     <?= $this->render('_form', [
         'model' => $model,
-        'modelsVentaDetalle' => $modelsVentaDetalle, 
     ]) ?>
 
 </div>

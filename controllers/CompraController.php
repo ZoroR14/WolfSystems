@@ -129,7 +129,7 @@ class CompraController extends Controller
             $modelsCompraDetalle = Model::createMultiple(CompraDetalle::classname(), $modelsCompraDetalle);
             Model::loadMultiple($modelsCompraDetalle, Yii::$app->request->post());
             $deletedIDs = array_diff($oldIDs, array_filter(ArrayHelper::map($modelsCompraDetalle, 'id', 'id')));
-            
+
             
             // validate all models
             $valid = $model->validate();
@@ -139,7 +139,7 @@ class CompraController extends Controller
                 $transaction = \Yii::$app->db->beginTransaction();
                 try {
                     if ($flag = $model->save(false)) {
-                        if (! empty($deletedIDs)) {
+                        if (!empty($deletedIDs)) {
                             CompraDetalle::deleteAll(['id' => $deletedIDs]);
                         }
                         foreach ($modelsCompraDetalle as $modelCompraDetalle) {
@@ -159,16 +159,14 @@ class CompraController extends Controller
                 }
             }
         } 
-           else{
-               return $this->render('update', [
-           
+            return $this->render('update', [
                 'model' => $model, 
                 'modelsCompraDetalle' => (empty($modelsCompraDetalle)) ? [new CompraDetalle] : $modelsCompraDetalle,
                 'proveedor' => $proveedor
                 
             ]);
     }
-}
+
     /**
      * Deletes an existing compra model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
@@ -181,7 +179,7 @@ class CompraController extends Controller
 
         return $this->redirect(['index']);
     }
-    
+
     /**
      * Finds the compra model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -198,6 +196,4 @@ class CompraController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-    
-    
 }

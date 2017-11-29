@@ -71,10 +71,8 @@ return [
     /**
     * @return \yii\db\ActiveQuery
     */
-    public function getcompraDetalles()
+    public function getCompraDetalles()
     {
     return $this->hasMany(CompraDetalle::className(), ['compra_id' => 'id']);
     }
-    
-    
 }
